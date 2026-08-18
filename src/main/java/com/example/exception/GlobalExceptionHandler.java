@@ -22,19 +22,28 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-public ResponseEntity<Map<String, String>> handleValidationErrors(
-        MethodArgumentNotValidException exception) {
+    public ResponseEntity<Map<String, String>> handleValidationErrors(
+            MethodArgumentNotValidException exception) {
 
-    Map<String, String> errors = new HashMap<>();
+        Map<String, String> errors = new HashMap<>();
 
-    exception.getBindingResult()
-            .getFieldErrors()
-            .forEach(error ->
-                    errors.put(error.getField(), error.getDefaultMessage())
-            );
+        exception.getBindingResult()
+                .getFieldErrors()
+                .forEach(error ->
+                        errors.put(error.getField(), error.getDefaultMessage())
+                );
 
-    return ResponseEntity
-            .status(HttpStatus.BAD_REQUEST)
-            .body(errors);
-}
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(errors);
+    }
+
+    @ExceptionHandler(DuplicateResourceException.class)
+    public ResponseEntity<Map<String, String>> handleDuplicateResource(
+            DuplicateResourceException exception) {
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(Map.of("message", exception.getMessage()));
+    }
 }
