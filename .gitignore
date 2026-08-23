@@ -34,3 +34,7 @@ build/
 
 ### Environment variables ###
 .env
+
+### Kubernetes secrets ###
+k8s/mysql-secret.yaml
+k8s/app-secret.yaml

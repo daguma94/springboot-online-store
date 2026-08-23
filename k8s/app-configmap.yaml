@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  DB_URL: jdbc:mysql://mysql:3306/springboot_online_store
+  DB_USERNAME: root
