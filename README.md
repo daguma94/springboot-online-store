@@ -43,6 +43,20 @@ Docker support and a Kubernetes deployment.
 - Dockerized application and database
 - Kubernetes deployment
 
+## Roles
+
+### USER
+
+- View products and categories
+- Create orders
+- View own orders
+
+### ADMIN
+
+- View products and categories
+- Create, update and delete products
+- Create, update and delete categories
+
 ## Architecture
 
 ```text
