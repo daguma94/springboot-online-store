@@ -140,7 +140,7 @@ docker compose up --build
 The API will be available at:
 
 ```text
-http://localhost:8080
+http://localhost:8081
 ```
 
 ## Kubernetes
