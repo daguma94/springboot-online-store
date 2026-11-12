@@ -4,3 +4,17 @@ target
 .vscode
 .idea
 *.log
+
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+
+# Secretos de Kubernetes
+k8s/*-secret.yaml
+
+# Archivos de claves y certificados privados
+*.pem
+*.key
+*.p12
+*.pfx

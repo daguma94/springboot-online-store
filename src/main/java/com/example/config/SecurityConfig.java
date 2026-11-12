@@ -13,6 +13,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.example.security.JwtAuthenticationFilter;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Configuration
 public class SecurityConfig {
 
@@ -68,6 +70,19 @@ public class SecurityConfig {
                             .hasRole("USER")
                         
                         .anyRequest().authenticated()
+                )
+
+                .exceptionHandling(ex -> ex
+                    .authenticationEntryPoint((request, response, authException) ->
+                            response.setStatus(
+                                    HttpServletResponse.SC_UNAUTHORIZED
+                            )
+                    )
+                    .accessDeniedHandler((request, response, accessDeniedException) ->
+                            response.setStatus(
+                                    HttpServletResponse.SC_FORBIDDEN
+                            )
+                    )
                 )
 
                 .addFilterBefore(
